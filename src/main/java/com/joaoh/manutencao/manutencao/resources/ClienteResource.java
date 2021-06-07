@@ -6,8 +6,10 @@ import com.joaoh.manutencao.manutencao.domain.Cliente;
 import com.joaoh.manutencao.manutencao.domain.OrdemDeServico;
 import com.joaoh.manutencao.manutencao.domain.dto.ClienteDTO;
 import com.joaoh.manutencao.manutencao.domain.dto.ClienteNewDTO;
+import com.joaoh.manutencao.manutencao.domain.dto.OrdemApproveDTO;
 import com.joaoh.manutencao.manutencao.repositories.OrdemDeServicoRepository;
 import com.joaoh.manutencao.manutencao.services.ClienteService;
+import com.joaoh.manutencao.manutencao.services.OrdemDeServicoService;
 import com.joaoh.manutencao.manutencao.services.utils.URICreator;
 
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,6 +3,7 @@ package com.joaoh.manutencao.manutencao.services;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.joaoh.manutencao.manutencao.domain.Cliente;
 import com.joaoh.manutencao.manutencao.domain.OrdemDeServico;
 import com.joaoh.manutencao.manutencao.domain.dto.OrdemApproveDTO;
 import com.joaoh.manutencao.manutencao.domain.dto.OrdemDeServicoDTO;
@@ -33,19 +34,26 @@ public class OrdemDeServicoService {
                 .orElseThrow(() -> new ObjectNotFoundException("Ordem de serviço id " + ordemId + " não encontrado"));
     }
 
-    public OrdemDeServico insert(OrdemDeServicoNewDTO objOrdemDto) {
-        OrdemDeServico ordem = this.fromDTO(objOrdemDto);
+    public OrdemDeServico insert(OrdemDeServicoNewDTO ordemDto) {
+        OrdemDeServico ordem = this.fromDTO(ordemDto);
         
         ordem = ordemDeServicoRepository.save(ordem);
 
         return ordem;
     }
 
-    public OrdemDeServico update(Integer ordemId, OrdemDeServicoDTO objDto) {
+    public OrdemDeServico update(Integer ordemId, OrdemDeServicoDTO ordemDto) {
         OrdemDeServico ordem = this.findById(ordemId);
-        this.updateDatabase(ordem, objDto);
+        this.updateDatabase(ordem, ordemDto);
 
         return ordemDeServicoRepository.save(ordem);
+    }
+
+    public OrdemDeServico updateApprove(Integer ordemId, OrdemApproveDTO ordemDto) {
+        OrdemDeServico ordem = this.fromDTOapprove(ordemDto, ordemId);
+
+        ordem = ordemDeServicoRepository.save(ordem);
+        return ordem;
     }
 
     public void delete(Integer ordemId) {
@@ -56,6 +64,16 @@ public class OrdemDeServicoService {
         } else {
             ordemDeServicoRepository.delete(ordem);
         }
+    }
+
+    public OrdemDeServico fromDTOapprove(OrdemApproveDTO objDto, Integer ordemId){
+        OrdemDeServico ordem = this.findById(ordemId);
+        Cliente cliente = ordem.getCliente();
+
+        ordem.setStatus(EstadoOrdemServico.APROVADA);
+        ordem.setCliente(cliente);
+
+        return ordem;
     }
 
     public OrdemDeServico fromDTO(OrdemDeServicoNewDTO objDto) {

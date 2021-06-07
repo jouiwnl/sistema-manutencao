@@ -69,5 +69,6 @@ public class EstadoResource {
     public List<Cidade> findAllCitys(@PathVariable (name = "id") Integer estado_id) {
         return cidadeService.findCidades(estado_id);
     }    
+
     //
 }

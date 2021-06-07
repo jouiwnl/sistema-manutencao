@@ -29,7 +29,7 @@ public class OrdemDeServico implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(value = EnumType.ORDINAL)
     private EstadoOrdemServico status;
     
     

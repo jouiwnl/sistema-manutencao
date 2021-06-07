@@ -3,6 +3,7 @@ package com.joaoh.manutencao.manutencao.resources;
 import java.util.List;
 
 import com.joaoh.manutencao.manutencao.domain.OrdemDeServico;
+import com.joaoh.manutencao.manutencao.domain.dto.OrdemApproveDTO;
 import com.joaoh.manutencao.manutencao.domain.dto.OrdemDeServicoDTO;
 import com.joaoh.manutencao.manutencao.domain.dto.OrdemDeServicoNewDTO;
 import com.joaoh.manutencao.manutencao.services.OrdemDeServicoService;
@@ -60,5 +61,11 @@ public class OrdemDeServicoResource {
         
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping(value = "/{id}/ordemAprovada")
+    public ResponseEntity<Void> updateOrdem(@PathVariable(name = "id") Integer ordemID, @RequestBody OrdemApproveDTO objDto) {
+        service.updateApprove(ordemID, objDto);
+        return ResponseEntity.ok().build();
+    } 
     
 }

@@ -8,8 +8,7 @@ public enum TipoEquipamento {
     COMPUTADOR(1, "Computador/Notebook"),
     IMPRESSORA(2, "Impressora"),
     CELULAR(3, "Celular"),
-    ELETRODOMESTICO(4, "Eletrodoméstico"),
-    OUTRO(5, "Outros");
+    ELETRODOMESTICO(4, "Eletrodoméstico");
 
     private Integer cod;
     private String descricao;

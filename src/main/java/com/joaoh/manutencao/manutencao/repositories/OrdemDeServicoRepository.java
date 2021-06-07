@@ -8,5 +8,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OrdemDeServicoRepository extends JpaRepository<OrdemDeServico, Integer> {
+    
     List<OrdemDeServico> findAllByClienteId(Integer clienteId);
+
+	
 }
