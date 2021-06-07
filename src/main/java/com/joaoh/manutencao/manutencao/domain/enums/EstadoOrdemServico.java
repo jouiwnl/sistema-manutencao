@@ -4,9 +4,11 @@ import lombok.Getter;
 
 @Getter
 public enum EstadoOrdemServico {
-    ABERTA(1, "Em Aberto"),
-    ATENDIMENTO(2, "Em Atendimento"),
-    CONCLUIDA(3, "Concluída");
+    APROVACAO(1, "Aguardando Aprovação"),
+    APROVADA(2, "Aprovada"),
+    ABERTA(3, "Em Aberto"),
+    ATENDIMENTO(4, "Em Atendimento"),
+    CONCLUIDA(5, "Concluída");
 
     private Integer cod;
     private String descricao;

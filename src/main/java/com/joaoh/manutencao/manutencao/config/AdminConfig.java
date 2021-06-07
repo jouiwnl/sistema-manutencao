@@ -5,6 +5,7 @@ import com.joaoh.manutencao.manutencao.domain.enums.TipoFuncionario;
 import com.joaoh.manutencao.manutencao.repositories.FuncionarioRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
@@ -17,15 +18,17 @@ public class AdminConfig {
     @Autowired
     private BCryptPasswordEncoder crypt;
     
-    public boolean verifyAdmin(){
-        if (!funcionarioRepository.findByUser("admin").isPresent()) {
+    @Bean
+    public void verifyAdmin(){
+        if (!funcionarioRepository.findByUsuario("admin").isPresent()) {
             Funcionario admin = new Funcionario("admin", "admin", 
             crypt.encode("admin"), TipoFuncionario.ADM);
 
-            funcionarioRepository.save(admin);
+            funcionarioRepository.save(admin); 
+        } else {
+           System.out.println("Funcionario não encontrado"); 
         }
-
-        return true;
+        
     }
 
 }

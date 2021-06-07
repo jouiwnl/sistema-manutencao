@@ -26,7 +26,7 @@ public class FuncionarioService {
     }
 
     public Funcionario findByUsername(String user) {
-        return funcionarioRepository.findByUser(user)
+        return funcionarioRepository.findByUsuario(user)
                 .orElseThrow(() -> new ObjectNotFoundException("Funcionário " + user + " não encontrado"));
     }
 

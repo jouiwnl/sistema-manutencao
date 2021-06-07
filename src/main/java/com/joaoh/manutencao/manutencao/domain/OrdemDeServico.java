@@ -40,9 +40,11 @@ public class OrdemDeServico implements Serializable {
 
     @NotEmpty(message = "Preenchimento Obrigatório")
     private String nomeEquipamento;
+
+    @NotEmpty(message = "Preenchimento Obrigatório")
     private String detalhe;
     
-    @Enumerated(value = EnumType.STRING)
+    @Enumerated(value = EnumType.ORDINAL)
     private TipoEquipamento tipoEquipamento;
 
     private LocalDate data;

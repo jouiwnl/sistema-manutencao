@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.joaoh.manutencao.manutencao.domain.OrdemDeServico;
+import com.joaoh.manutencao.manutencao.domain.dto.OrdemApproveDTO;
 import com.joaoh.manutencao.manutencao.domain.dto.OrdemDeServicoDTO;
 import com.joaoh.manutencao.manutencao.domain.dto.OrdemDeServicoNewDTO;
 import com.joaoh.manutencao.manutencao.domain.enums.EstadoOrdemServico;
@@ -72,6 +73,9 @@ public class OrdemDeServicoService {
     }
 
     public void updateDatabase(OrdemDeServico ordem, OrdemDeServicoDTO objDto) {
+        ordem.setNomeEquipamento(objDto.getNomeEquipamento());
+        ordem.setDetalhe(objDto.getDetalhe());
+        ordem.setTipoEquipamento(objDto.getTipoEquipamento());
         ordem.setStatus(objDto.getStatus());
     }
 

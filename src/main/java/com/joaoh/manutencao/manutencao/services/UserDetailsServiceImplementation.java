@@ -19,7 +19,7 @@ public class UserDetailsServiceImplementation implements UserDetailsService {
     public UserDetails loadUserByUsername(String obj) throws UsernameNotFoundException {
         Funcionario funcionario = funcionarioService.findByUsername(obj);
 
-        return new Usuario(funcionario.getId(), funcionario.getUser(), funcionario.getSenha(), funcionario.getTipo());
+        return new Usuario(funcionario.getId(), funcionario.getUsuario(), funcionario.getSenha(), funcionario.getTipo());
     }
 }
 

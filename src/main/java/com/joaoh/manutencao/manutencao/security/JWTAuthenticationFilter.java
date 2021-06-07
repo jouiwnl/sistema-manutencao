@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.joaoh.manutencao.manutencao.domain.Credenciais;
 
-import org.apache.catalina.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -41,7 +40,7 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
 
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authResult) {
-        String user = ((User) authResult.getPrincipal()).getUsername();
+        String user = ((Usuario) authResult.getPrincipal()).getUsername();
         String token = jwtManager.generateToken(user);
 
         response.addHeader("Authorization", "Bearer " + token);

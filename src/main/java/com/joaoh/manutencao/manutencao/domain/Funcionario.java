@@ -17,10 +17,11 @@ import lombok.Getter;
 import lombok.Setter;
 
 
-@Entity
+
 @Getter
 @Setter
 @EqualsAndHashCode
+@Entity
 public class Funcionario implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,19 +30,18 @@ public class Funcionario implements Serializable{
     @NotEmpty
     private String nome;
     @NotEmpty
-    private String user;
+    private String usuario;
     @NotEmpty
     private String senha;
 
-    @NotEmpty
     @Enumerated(EnumType.STRING)
     private TipoFuncionario tipo;
 
     public Funcionario() {}
 
-    public Funcionario(String nome, String user, String senha, TipoFuncionario tipo) {
+    public Funcionario(String nome, String usuario, String senha, TipoFuncionario tipo) {
         this.nome = nome;
-        this.user = user;
+        this.usuario = usuario;
         this.senha = senha;
         this.tipo = tipo;
     }
